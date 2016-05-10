@@ -12,6 +12,6 @@ See [this instructions](https://github.com/ChillarAnand/python-101/blob/master/s
 
 ## Syllabus
 
-[Click here](https://github.com/ChillarAnand/python-101/blob/master/manuscript.md#syllabus) for course syllabus.
+[Click here](https://github.com/vnitinv/python-101/blob/master/manuscript.md#syllabus) for course syllabus.
 
 
