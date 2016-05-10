@@ -302,7 +302,7 @@ Python has 002 quote types.
 
 >>> x[2:4] = ["Python"]          # Slices can also be initialized
 >>> x                            
-[1, 2, 'Python', 1000, 6, 'Bangalore']
+[1, 2, 'Python', 1000, 6, 'Bangalore'] #Lists do not have to hold the same data type
 
 >>> len(x)                       # length of list can be found using len 
 6
@@ -354,6 +354,24 @@ Python has 002 quote types.
 >>> a
 []
 >>> del a                     # delete the entire variable
+
+The range() command is a convenient way to make sequential lists of numbers:
+
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Note that range(n) starts at 0 and gives the sequential list of integers less than n. If you want to start at a different number, use range(start,stop)
+
+>>> range(2,8)
+[2, 3, 4, 5, 6, 7]
+The lists created above with range have a step of 1 between elements. You can also give a fixed step size via a third command:
+
+>>> evens = range(0,20,2)
+>>> evens
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+>>> evens[3]
+6
+
+len(evens)
 ```
 
 #### Tuples
@@ -390,41 +408,13 @@ TypeError: 'tuple' object does not support item assignment
 
 ```python
 >>> empty = ()
->>> singleton = 'hello',    
+>>> x = 'hello',    
 >>> len(empty)
 0
->>> len(singleton)
+>>> len(x)
 1
->>> singleton
+>>> x
 ('hello',)
-```
-
-#### Sets
-
-Please the examples below  
-```python
->>> basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
->>> print(basket)                      # show that duplicates have been removed
-{'orange', 'banana', 'pear', 'apple'}
->>> 'orange' in basket                 # fast membership testing
-True
->>> 'crabgrass' in basket
-False
-
->>> # Demonstrate set operations on unique letters from two words
-...
->>> a = set('abracadabra')
->>> b = set('alacazam')
->>> a                                  # unique letters in a
-{'a', 'r', 'b', 'c', 'd'}
->>> a - b                              # letters in a but not in b
-{'r', 'd', 'b'}
->>> a | b                              # letters in either a or b
-{'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'}
->>> a & b                              # letters in both a and b
-{'a', 'c'}
->>> a ^ b                              # letters in a or b but not both
-{'r', 'd', 'b', 'm', 'z', 'l'}
 ```
 
 #### Dictionaries
@@ -462,19 +452,6 @@ True
 >>> 'harry' not in score
 False
 ```
-
-##### The dict() constructor
-* used to build dictionary form a sequence of "key, value" pairs
-* It can also be done by specifying pairs using keyword arguments
-
-```python
->>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
-{'sape': 4139, 'jack': 4098, 'guido': 4127}
->>> dict(sape=4139, guido=4127, jack=4098)
-{'sape': 4139, 'jack': 4098, 'guido': 4127}
-```
-
-
 
 ### Control Flow Tools
 
@@ -608,6 +585,20 @@ range(-10, -100, -30)
 To iterate over indices of a sequence
 
 ```python
+>>> days_of_the_week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+>>> for day in days_of_the_week:
+    statement = "Today is " + day
+    print statement
+>>> for day in days_of_the_week:
+    statement = "Today is " + day
+    print statement
+    if day == "Sunday":
+        print "   Sleep in"
+    elif day == "Saturday":
+        print "   Do chores"
+    else:
+        print "   Go to work"
+        
 >>> a = ['Mary', 'had', 'a', 'little', 'lamb']
 >>> for i in range(len(a)):
 ...     print(i, a[i])
@@ -630,13 +621,9 @@ robin the brave
 ```
 
 ```python
->>> for i, v in enumerate(['tic', 'tac', 'toe']):
-...     print(i, v)
-...
-0 tic
-1 tac
-2 toe
-
+>>> for i in range(20):
+    print "The square of ",i," is ",i*i
+    
 >>> for i in reversed(range(1, 10, 2)):
 ...     print(i)
 ...
@@ -672,15 +659,6 @@ robin the brave
 7 is a prime number
 8 equals 2 * 4
 9 equals 3 * 3
-```
-
-##### The `pass` statement
-* It does nothing
-
-```python
->>> if True:
-...    pass
->>>
 ```
 
 ### Functions
@@ -762,40 +740,48 @@ Arguements can be either positional or keyword.
 
 
 ```python
->>> def power(base, exponent):
-...   return pow(base, exponent)
-...
->>> power(2,  3)
+>>> def fn(x, y):
+    return  x+y
+>>> fn(6,2)
 8
->>> power(base=2, exponent=3)
-8
-```
-
-Keyword arguements can be passed in any order.
-
-```python
->>> power(exponent=3, base=2)
-8
->>> power(base=2)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  TypeError: power() missing 1 required positional argument: 'exponent'
+>>> power(x=4,y=7)
+11
 ```
 
 We can assign default values to arguements to make them optional.
 
 ```python
->>> def power(base, exponent=1):
-...     return  pow(base, exponent)
+>>> def fn(x=4, y=5):
+...     return  x+y
 ...
->>> power(2)
-2
->>> power(2, 3)
-8
->>> power(exponent=3, base=2)
-8
+>>> fn()
+>>> fn(2)
+>>> fn(3,6)
+>>> fn(y=10)
 ```
 
+### Check if number passed is prime or not
+```python
+def prime(n):
+	"""Check if the given number is prime or not"""
+	for i in range(2,n):
+	    if n%i==0:
+	        return False
+	return True
+```
+
+### Lets try Fibonacci series
+```python 
+def fibonacci(n):
+    "Return the Fibonacci sequence of length *n*"
+    a,b=0,1
+    if n < 1:
+        print "Fibonacci sequence only defined for length 1 or greater"
+        return
+    for i in range(n):
+	print a
+	a,b=b,a+b
+```
 
 #### Builtin functions
 
@@ -803,13 +789,6 @@ Python has some builtin functions which are always available.
 
 
 ```python
->>> help()
-
-
->>> print('python')
-python
-
-
 >>> score = [45, 67,  89, -12]
 >>> sum(score)
 189
