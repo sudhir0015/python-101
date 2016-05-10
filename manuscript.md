@@ -463,8 +463,8 @@ Lets see this with the help of an example
 >>> n = 20               # single assignment
 >>> a, b = 0, 1          # multi assignment 
 >>> while n > 0:
-...     print(a)
-...     a, b, n = b, a+b, n-1         # multi assignment
+    print(a)
+    a, b, n = b, a+b, n-1         # multi assignment
 ... 
 0
 1
@@ -503,8 +503,8 @@ value of a is:  10 value of b is:  12
 ```python
 >>> a, b = 0, 1
 >>> while b < 1000:
-...     print(a, end=',')
-...     a, b = b, a+b
+    print(a, end=',')
+    a, b = b, a+b
 ...
 0, 1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
 ```
@@ -518,11 +518,11 @@ See the example below
 >>> x = int(input("Please enter an integer number: "))
 Please enter an integer number: 56
 >>> if x%2 == 0:
-...     print("x is a multiple of 2")
-... elif x%3 == 0:
-...     print("x is a multiple of 3")
-... else:
-...     print("x is not a multiple of 2 or 3")
+    print("x is a multiple of 2")
+elif x%3 == 0:
+    print("x is a multiple of 3")
+else:
+    print("x is not a multiple of 2 or 3")
 ... 
 x is a multiple of 2
 ```
@@ -601,7 +601,7 @@ To iterate over indices of a sequence
         
 >>> a = ['Mary', 'had', 'a', 'little', 'lamb']
 >>> for i in range(len(a)):
-...     print(i, a[i])
+     print(i, a[i])
 ...
 0 Mary
 1 had
@@ -614,7 +614,7 @@ To iterate over dictionary
 ```python
 >>> knights = {'gallahad': 'the pure', 'robin': 'the brave'}
 >>> for k, v in knights.items():
-...     print(k, v)
+     print(k, v)
 ...
 gallahad the pure
 robin the brave
@@ -888,6 +888,134 @@ IOError: [Errno 2] No such file or directory: 'story.txt'
 >>> f.close()
 ```
 
+### Exception handling
+```python
+>>> x = [5]
+>>> x[2]
+
+Traceback (most recent call last):
+  File "<pyshell#120>", line 1, in <module>
+    x[2]
+IndexError: list index out of range
+>>> x.remove(23)
+
+Traceback (most recent call last):
+  File "<pyshell#121>", line 1, in <module>
+    x.remove(23)
+ValueError: list.remove(x): x not in list
+>>> try:
+	x[4]
+except:
+	print 'got an exception'
+
+	
+got an exception
+>>> try:
+	x[4]
+except IndexError:
+	print 'give proper index'
+
+	
+give proper index
+>>> try:
+	x.remove(34)
+except IndexError:
+	print 'give proper index'
+
+	
+
+Traceback (most recent call last):
+  File "<pyshell#130>", line 2, in <module>
+    x.remove(34)
+ValueError: list.remove(x): x not in list
+>>> try:
+	x.remove(34)
+except IndexError:
+	print 'give proper index'
+except ValueError:
+	print 'value not in list'
+
+	
+value not in list
+
+>>> try:
+	x.remove(34)
+except IndexError:
+	print 'give proper index'
+except ValueError:
+	print 'value not in list'
+except:
+	print 'go unknown exception'
+
+	
+value not in list
+>>> try:
+	print x[0]
+	print 5/0
+except IndexError:
+	print 'give proper index'
+except ValueError:
+	print 'value not in list'
+except:
+	print 'got unknown exception'
+
+	
+5
+got unknown exception
+>>> try:
+	print x[0]
+	print 5/0
+except Exception as ex:
+	print 'got unknown exception'
+
+	
+5
+got unknown exception
+>>> try:
+	print x[0]
+	print 5/0
+except Exception as ex:
+	print ex
+
+	
+5
+integer division or modulo by zero
+>>> ex
+ZeroDivisionError('integer division or modulo by zero',)
+>>> ex.message
+'integer division or modulo by zero'
+>>> try:
+	print x[0]
+	print 5/0
+except Exception as ex:
+	print ex.message
+
+5
+integer division or modulo by zero
+
+
+>>> 
+>>> try:
+	x[1]
+except:
+	print 'got exception'
+finally:
+	print 'inside finally'
+
+	
+got exception
+inside finally
+>>> try:
+	x[0]
+except:
+	print 'got exception'
+finally:
+	print 'inside finally'
+
+	
+5
+inside finally
+```
 
 ### Classes
 
