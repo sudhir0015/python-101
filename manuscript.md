@@ -12,7 +12,6 @@ The python script name and additional arguments thereafter are turned into a lis
 	`sys.argv[0]` is set to `-c` or `-m` respectively
 
 
-
 `python -c 'print(hello world)'`
 
 Here `-c` stands for a python command
@@ -277,35 +276,35 @@ Python has 002 quote types.
 * To add items at the end of the list use `append()`
 
 ```python
->>> list = [1, 2, 3, 4, 5, 6]
->>> list
+>>> x = [1, 2, 3, 4, 5, 6]
+>>> x
 [1, 2, 3, 4, 5, 6]
->>> list[0]                        # indexing returns the item
+>>> x[0]                        # indexing returns the item
 1
->>> list[4]                        # indexing returns the item
+>>> x[4]                        # indexing returns the item
 5
->>> list[-1]                        # indexing returns the item
+>>> x[-1]                        # indexing returns the item
 6
 
->>> list[2:]                        # Slicing returns a new list
+>>> x[2:]                        # Slicing returns a new list
 [3, 4, 5, 6]
 
->>> list + [12, 13, 14]             # list support concatenation
+>>> x + [12, 13, 14]             # list support concatenation
 [1, 2, 3, 4, 5, 6, 12, 13, 14]
 
->>> list[4] = 1000                  # lists are mutable
->>> list
+>>> x[4] = 1000                  # lists are mutable
+>>> x
 [1, 2, 3, 4, 1000, 6]
 
->>> list.append("Bangalore")        # Will append bangalore at the end of the list
->>> list
+>>> x.append("Bangalore")        # Will append bangalore at the end of the list
+>>> x
 [1, 2, 3, 4, 1000, 6, 'Bangalore']
 
->>> list[2:4] = ["Python"]          # Slices can also be initialized
->>> list                            
+>>> x[2:4] = ["Python"]          # Slices can also be initialized
+>>> x                            
 [1, 2, 'Python', 1000, 6, 'Bangalore']
 
->>> len(list)                       # length of list can be found using len 
+>>> len(x)                       # length of list can be found using len 
 6
 
 
