@@ -787,6 +787,7 @@ def fibonacci(n):
 
 Python has some builtin functions which are always available.
 
+https://docs.python.org/2/library/functions.html#built-in-functions
 
 ```python
 >>> score = [45, 67,  89, -12]
@@ -1207,5 +1208,19 @@ Example
 'Maruti'
 >>> 
 ```
+
+### File handling
+http://pymbook.readthedocs.io/en/latest/file.html
+http://www.tutorialspoint.com/python/python_files_io.htm
+
+### Regex
+http://www.tutorialspoint.com/python/python_reg_expressions.htm
+
+### Class
+http://www.tutorialspoint.com/python/python_classes_objects.htm
+http://anandology.com/python-practice-book/object_oriented_programming.html
+
+### unittest
+https://docs.python.org/2/library/unittest.html#module-unittest
 
 Note: Some of the examples in this tutorial are taken form official documentation/tutorial of python3. [See here] https://docs.python.org/3/tutorial/
